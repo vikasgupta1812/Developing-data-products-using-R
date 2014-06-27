@@ -1,9 +1,11 @@
 A Short Introduction to caret Package
 ========================================================
 
+```{r set-options, echo=FALSE, cache=FALSE}
+options(width = 160)
+```
 
-
-mlbench for ?? 
+mlbench - Machine Learning Benchmark Problems
 
 ```{r}
 rm(list=ls())

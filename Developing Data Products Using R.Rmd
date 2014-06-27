@@ -1,6 +1,9 @@
 Developing Data Products using R
 ========================================================
 
+```{r set-options, echo=FALSE, cache=FALSE}
+options(width = 160)
+```
 
 ```{r}
 rm(list=ls())

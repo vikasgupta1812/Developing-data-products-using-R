@@ -205,35 +205,20 @@ hljs.initHighlightingOnLoad();
 <pre><code class="r">summary(concrete)
 </code></pre>
 
-<pre><code>##      Cement    BlastFurnaceSlag     FlyAsh          Water    
-##  Min.   :102   Min.   :  0.0    Min.   :  0.0   Min.   :122  
-##  1st Qu.:192   1st Qu.:  0.0    1st Qu.:  0.0   1st Qu.:165  
-##  Median :273   Median : 22.0    Median :  0.0   Median :185  
-##  Mean   :281   Mean   : 73.9    Mean   : 54.2   Mean   :182  
-##  3rd Qu.:350   3rd Qu.:142.9    3rd Qu.:118.3   3rd Qu.:192  
-##  Max.   :540   Max.   :359.4    Max.   :200.1   Max.   :247  
-##  Superplasticizer CoarseAggregate FineAggregate      Age       
-##  Min.   : 0.0     Min.   : 801    Min.   :594   Min.   :  1.0  
-##  1st Qu.: 0.0     1st Qu.: 932    1st Qu.:731   1st Qu.:  7.0  
-##  Median : 6.4     Median : 968    Median :780   Median : 28.0  
-##  Mean   : 6.2     Mean   : 973    Mean   :774   Mean   : 45.7  
-##  3rd Qu.:10.2     3rd Qu.:1029    3rd Qu.:824   3rd Qu.: 56.0  
-##  Max.   :32.2     Max.   :1145    Max.   :993   Max.   :365.0  
-##  CompressiveStrength
-##  Min.   : 2.33      
-##  1st Qu.:23.71      
-##  Median :34.45      
-##  Mean   :35.82      
-##  3rd Qu.:46.13      
-##  Max.   :82.60
+<pre><code>##      Cement    BlastFurnaceSlag     FlyAsh          Water     Superplasticizer CoarseAggregate FineAggregate      Age        CompressiveStrength
+##  Min.   :102   Min.   :  0.0    Min.   :  0.0   Min.   :122   Min.   : 0.0     Min.   : 801    Min.   :594   Min.   :  1.0   Min.   : 2.33      
+##  1st Qu.:192   1st Qu.:  0.0    1st Qu.:  0.0   1st Qu.:165   1st Qu.: 0.0     1st Qu.: 932    1st Qu.:731   1st Qu.:  7.0   1st Qu.:23.71      
+##  Median :273   Median : 22.0    Median :  0.0   Median :185   Median : 6.4     Median : 968    Median :780   Median : 28.0   Median :34.45      
+##  Mean   :281   Mean   : 73.9    Mean   : 54.2   Mean   :182   Mean   : 6.2     Mean   : 973    Mean   :774   Mean   : 45.7   Mean   :35.82      
+##  3rd Qu.:350   3rd Qu.:142.9    3rd Qu.:118.3   3rd Qu.:192   3rd Qu.:10.2     3rd Qu.:1029    3rd Qu.:824   3rd Qu.: 56.0   3rd Qu.:46.13      
+##  Max.   :540   Max.   :359.4    Max.   :200.1   Max.   :247   Max.   :32.2     Max.   :1145    Max.   :993   Max.   :365.0   Max.   :82.60
 </code></pre>
 
 <pre><code class="r">names(concrete)
 </code></pre>
 
-<pre><code>## [1] &quot;Cement&quot;              &quot;BlastFurnaceSlag&quot;    &quot;FlyAsh&quot;             
-## [4] &quot;Water&quot;               &quot;Superplasticizer&quot;    &quot;CoarseAggregate&quot;    
-## [7] &quot;FineAggregate&quot;       &quot;Age&quot;                 &quot;CompressiveStrength&quot;
+<pre><code>## [1] &quot;Cement&quot;              &quot;BlastFurnaceSlag&quot;    &quot;FlyAsh&quot;              &quot;Water&quot;               &quot;Superplasticizer&quot;    &quot;CoarseAggregate&quot;     &quot;FineAggregate&quot;      
+## [8] &quot;Age&quot;                 &quot;CompressiveStrength&quot;
 </code></pre>
 
 <pre><code class="r">dim(concrete)
@@ -265,20 +250,13 @@ testing = mixtures[-inTrain, ]
 <pre><code class="r">head(training)
 </code></pre>
 
-<pre><code>##     Cement BlastFurnaceSlag FlyAsh   Water Superplasticizer
-## 23 0.05829          0.08744      0 0.08017                0
-## 47 0.14573          0.00000      0 0.08017                0
-## 55 0.05829          0.08744      0 0.08017                0
-## 56 0.08535          0.05690      0 0.08251                0
-## 58 0.08535          0.05690      0 0.08251                0
-## 63 0.13341          0.00000      0 0.08263                0
-##    CoarseAggregate FineAggregate Age CompressiveStrength
-## 23          0.4372        0.3369   3                8.06
-## 47          0.4372        0.3369   3               15.05
-## 55          0.4372        0.3369   7               14.59
-## 56          0.4205        0.3548   7               14.64
-## 58          0.4205        0.3548   3                9.13
-## 63          0.4179        0.3661   3                9.87
+<pre><code>##     Cement BlastFurnaceSlag FlyAsh   Water Superplasticizer CoarseAggregate FineAggregate Age CompressiveStrength
+## 23 0.05829          0.08744      0 0.08017                0          0.4372        0.3369   3                8.06
+## 47 0.14573          0.00000      0 0.08017                0          0.4372        0.3369   3               15.05
+## 55 0.05829          0.08744      0 0.08017                0          0.4372        0.3369   7               14.59
+## 56 0.08535          0.05690      0 0.08251                0          0.4205        0.3548   7               14.64
+## 58 0.08535          0.05690      0 0.08251                0          0.4205        0.3548   3                9.13
+## 63 0.13341          0.00000      0 0.08263                0          0.4179        0.3661   3                9.87
 </code></pre>
 
 <pre><code class="r">str(training)
@@ -342,70 +320,38 @@ data(AlzheimerDisease)
 <pre><code class="r">names(predictors)
 </code></pre>
 
-<pre><code>##   [1] &quot;ACE_CD143_Angiotensin_Converti&quot;   &quot;ACTH_Adrenocorticotropic_Hormon&quot; 
-##   [3] &quot;AXL&quot;                              &quot;Adiponectin&quot;                     
-##   [5] &quot;Alpha_1_Antichymotrypsin&quot;         &quot;Alpha_1_Antitrypsin&quot;             
-##   [7] &quot;Alpha_1_Microglobulin&quot;            &quot;Alpha_2_Macroglobulin&quot;           
-##   [9] &quot;Angiopoietin_2_ANG_2&quot;             &quot;Angiotensinogen&quot;                 
-##  [11] &quot;Apolipoprotein_A_IV&quot;              &quot;Apolipoprotein_A1&quot;               
-##  [13] &quot;Apolipoprotein_A2&quot;                &quot;Apolipoprotein_B&quot;                
-##  [15] &quot;Apolipoprotein_CI&quot;                &quot;Apolipoprotein_CIII&quot;             
-##  [17] &quot;Apolipoprotein_D&quot;                 &quot;Apolipoprotein_E&quot;                
-##  [19] &quot;Apolipoprotein_H&quot;                 &quot;B_Lymphocyte_Chemoattractant_BL&quot; 
-##  [21] &quot;BMP_6&quot;                            &quot;Beta_2_Microglobulin&quot;            
-##  [23] &quot;Betacellulin&quot;                     &quot;C_Reactive_Protein&quot;              
-##  [25] &quot;CD40&quot;                             &quot;CD5L&quot;                            
-##  [27] &quot;Calbindin&quot;                        &quot;Calcitonin&quot;                      
-##  [29] &quot;CgA&quot;                              &quot;Clusterin_Apo_J&quot;                 
-##  [31] &quot;Complement_3&quot;                     &quot;Complement_Factor_H&quot;             
-##  [33] &quot;Connective_Tissue_Growth_Factor&quot;  &quot;Cortisol&quot;                        
-##  [35] &quot;Creatine_Kinase_MB&quot;               &quot;Cystatin_C&quot;                      
-##  [37] &quot;EGF_R&quot;                            &quot;EN_RAGE&quot;                         
-##  [39] &quot;ENA_78&quot;                           &quot;Eotaxin_3&quot;                       
-##  [41] &quot;FAS&quot;                              &quot;FSH_Follicle_Stimulation_Hormon&quot; 
-##  [43] &quot;Fas_Ligand&quot;                       &quot;Fatty_Acid_Binding_Protein&quot;      
-##  [45] &quot;Ferritin&quot;                         &quot;Fetuin_A&quot;                        
-##  [47] &quot;Fibrinogen&quot;                       &quot;GRO_alpha&quot;                       
-##  [49] &quot;Gamma_Interferon_induced_Monokin&quot; &quot;Glutathione_S_Transferase_alpha&quot; 
-##  [51] &quot;HB_EGF&quot;                           &quot;HCC_4&quot;                           
-##  [53] &quot;Hepatocyte_Growth_Factor_HGF&quot;     &quot;I_309&quot;                           
-##  [55] &quot;ICAM_1&quot;                           &quot;IGF_BP_2&quot;                        
-##  [57] &quot;IL_11&quot;                            &quot;IL_13&quot;                           
-##  [59] &quot;IL_16&quot;                            &quot;IL_17E&quot;                          
-##  [61] &quot;IL_1alpha&quot;                        &quot;IL_3&quot;                            
-##  [63] &quot;IL_4&quot;                             &quot;IL_5&quot;                            
-##  [65] &quot;IL_6&quot;                             &quot;IL_6_Receptor&quot;                   
-##  [67] &quot;IL_7&quot;                             &quot;IL_8&quot;                            
-##  [69] &quot;IP_10_Inducible_Protein_10&quot;       &quot;IgA&quot;                             
-##  [71] &quot;Insulin&quot;                          &quot;Kidney_Injury_Molecule_1_KIM_1&quot;  
-##  [73] &quot;LOX_1&quot;                            &quot;Leptin&quot;                          
-##  [75] &quot;Lipoprotein_a&quot;                    &quot;MCP_1&quot;                           
-##  [77] &quot;MCP_2&quot;                            &quot;MIF&quot;                             
-##  [79] &quot;MIP_1alpha&quot;                       &quot;MIP_1beta&quot;                       
-##  [81] &quot;MMP_2&quot;                            &quot;MMP_3&quot;                           
-##  [83] &quot;MMP10&quot;                            &quot;MMP7&quot;                            
-##  [85] &quot;Myoglobin&quot;                        &quot;NT_proBNP&quot;                       
-##  [87] &quot;NrCAM&quot;                            &quot;Osteopontin&quot;                     
-##  [89] &quot;PAI_1&quot;                            &quot;PAPP_A&quot;                          
-##  [91] &quot;PLGF&quot;                             &quot;PYY&quot;                             
-##  [93] &quot;Pancreatic_polypeptide&quot;           &quot;Prolactin&quot;                       
-##  [95] &quot;Prostatic_Acid_Phosphatase&quot;       &quot;Protein_S&quot;                       
-##  [97] &quot;Pulmonary_and_Activation_Regulat&quot; &quot;RANTES&quot;                          
-##  [99] &quot;Resistin&quot;                         &quot;S100b&quot;                           
-## [101] &quot;SGOT&quot;                             &quot;SHBG&quot;                            
-## [103] &quot;SOD&quot;                              &quot;Serum_Amyloid_P&quot;                 
-## [105] &quot;Sortilin&quot;                         &quot;Stem_Cell_Factor&quot;                
-## [107] &quot;TGF_alpha&quot;                        &quot;TIMP_1&quot;                          
-## [109] &quot;TNF_RII&quot;                          &quot;TRAIL_R3&quot;                        
-## [111] &quot;TTR_prealbumin&quot;                   &quot;Tamm_Horsfall_Protein_THP&quot;       
-## [113] &quot;Thrombomodulin&quot;                   &quot;Thrombopoietin&quot;                  
-## [115] &quot;Thymus_Expressed_Chemokine_TECK&quot;  &quot;Thyroid_Stimulating_Hormone&quot;     
-## [117] &quot;Thyroxine_Binding_Globulin&quot;       &quot;Tissue_Factor&quot;                   
-## [119] &quot;Transferrin&quot;                      &quot;Trefoil_Factor_3_TFF3&quot;           
-## [121] &quot;VCAM_1&quot;                           &quot;VEGF&quot;                            
-## [123] &quot;Vitronectin&quot;                      &quot;von_Willebrand_Factor&quot;           
-## [125] &quot;age&quot;                              &quot;tau&quot;                             
-## [127] &quot;p_tau&quot;                            &quot;Ab_42&quot;                           
+<pre><code>##   [1] &quot;ACE_CD143_Angiotensin_Converti&quot;   &quot;ACTH_Adrenocorticotropic_Hormon&quot;  &quot;AXL&quot;                              &quot;Adiponectin&quot;                     
+##   [5] &quot;Alpha_1_Antichymotrypsin&quot;         &quot;Alpha_1_Antitrypsin&quot;              &quot;Alpha_1_Microglobulin&quot;            &quot;Alpha_2_Macroglobulin&quot;           
+##   [9] &quot;Angiopoietin_2_ANG_2&quot;             &quot;Angiotensinogen&quot;                  &quot;Apolipoprotein_A_IV&quot;              &quot;Apolipoprotein_A1&quot;               
+##  [13] &quot;Apolipoprotein_A2&quot;                &quot;Apolipoprotein_B&quot;                 &quot;Apolipoprotein_CI&quot;                &quot;Apolipoprotein_CIII&quot;             
+##  [17] &quot;Apolipoprotein_D&quot;                 &quot;Apolipoprotein_E&quot;                 &quot;Apolipoprotein_H&quot;                 &quot;B_Lymphocyte_Chemoattractant_BL&quot; 
+##  [21] &quot;BMP_6&quot;                            &quot;Beta_2_Microglobulin&quot;             &quot;Betacellulin&quot;                     &quot;C_Reactive_Protein&quot;              
+##  [25] &quot;CD40&quot;                             &quot;CD5L&quot;                             &quot;Calbindin&quot;                        &quot;Calcitonin&quot;                      
+##  [29] &quot;CgA&quot;                              &quot;Clusterin_Apo_J&quot;                  &quot;Complement_3&quot;                     &quot;Complement_Factor_H&quot;             
+##  [33] &quot;Connective_Tissue_Growth_Factor&quot;  &quot;Cortisol&quot;                         &quot;Creatine_Kinase_MB&quot;               &quot;Cystatin_C&quot;                      
+##  [37] &quot;EGF_R&quot;                            &quot;EN_RAGE&quot;                          &quot;ENA_78&quot;                           &quot;Eotaxin_3&quot;                       
+##  [41] &quot;FAS&quot;                              &quot;FSH_Follicle_Stimulation_Hormon&quot;  &quot;Fas_Ligand&quot;                       &quot;Fatty_Acid_Binding_Protein&quot;      
+##  [45] &quot;Ferritin&quot;                         &quot;Fetuin_A&quot;                         &quot;Fibrinogen&quot;                       &quot;GRO_alpha&quot;                       
+##  [49] &quot;Gamma_Interferon_induced_Monokin&quot; &quot;Glutathione_S_Transferase_alpha&quot;  &quot;HB_EGF&quot;                           &quot;HCC_4&quot;                           
+##  [53] &quot;Hepatocyte_Growth_Factor_HGF&quot;     &quot;I_309&quot;                            &quot;ICAM_1&quot;                           &quot;IGF_BP_2&quot;                        
+##  [57] &quot;IL_11&quot;                            &quot;IL_13&quot;                            &quot;IL_16&quot;                            &quot;IL_17E&quot;                          
+##  [61] &quot;IL_1alpha&quot;                        &quot;IL_3&quot;                             &quot;IL_4&quot;                             &quot;IL_5&quot;                            
+##  [65] &quot;IL_6&quot;                             &quot;IL_6_Receptor&quot;                    &quot;IL_7&quot;                             &quot;IL_8&quot;                            
+##  [69] &quot;IP_10_Inducible_Protein_10&quot;       &quot;IgA&quot;                              &quot;Insulin&quot;                          &quot;Kidney_Injury_Molecule_1_KIM_1&quot;  
+##  [73] &quot;LOX_1&quot;                            &quot;Leptin&quot;                           &quot;Lipoprotein_a&quot;                    &quot;MCP_1&quot;                           
+##  [77] &quot;MCP_2&quot;                            &quot;MIF&quot;                              &quot;MIP_1alpha&quot;                       &quot;MIP_1beta&quot;                       
+##  [81] &quot;MMP_2&quot;                            &quot;MMP_3&quot;                            &quot;MMP10&quot;                            &quot;MMP7&quot;                            
+##  [85] &quot;Myoglobin&quot;                        &quot;NT_proBNP&quot;                        &quot;NrCAM&quot;                            &quot;Osteopontin&quot;                     
+##  [89] &quot;PAI_1&quot;                            &quot;PAPP_A&quot;                           &quot;PLGF&quot;                             &quot;PYY&quot;                             
+##  [93] &quot;Pancreatic_polypeptide&quot;           &quot;Prolactin&quot;                        &quot;Prostatic_Acid_Phosphatase&quot;       &quot;Protein_S&quot;                       
+##  [97] &quot;Pulmonary_and_Activation_Regulat&quot; &quot;RANTES&quot;                           &quot;Resistin&quot;                         &quot;S100b&quot;                           
+## [101] &quot;SGOT&quot;                             &quot;SHBG&quot;                             &quot;SOD&quot;                              &quot;Serum_Amyloid_P&quot;                 
+## [105] &quot;Sortilin&quot;                         &quot;Stem_Cell_Factor&quot;                 &quot;TGF_alpha&quot;                        &quot;TIMP_1&quot;                          
+## [109] &quot;TNF_RII&quot;                          &quot;TRAIL_R3&quot;                         &quot;TTR_prealbumin&quot;                   &quot;Tamm_Horsfall_Protein_THP&quot;       
+## [113] &quot;Thrombomodulin&quot;                   &quot;Thrombopoietin&quot;                   &quot;Thymus_Expressed_Chemokine_TECK&quot;  &quot;Thyroid_Stimulating_Hormone&quot;     
+## [117] &quot;Thyroxine_Binding_Globulin&quot;       &quot;Tissue_Factor&quot;                    &quot;Transferrin&quot;                      &quot;Trefoil_Factor_3_TFF3&quot;           
+## [121] &quot;VCAM_1&quot;                           &quot;VEGF&quot;                             &quot;Vitronectin&quot;                      &quot;von_Willebrand_Factor&quot;           
+## [125] &quot;age&quot;                              &quot;tau&quot;                              &quot;p_tau&quot;                            &quot;Ab_42&quot;                           
 ## [129] &quot;male&quot;                             &quot;Genotype&quot;
 </code></pre>
 
@@ -430,72 +376,39 @@ data(AlzheimerDisease)
 names(adData)
 </code></pre>
 
-<pre><code>##   [1] &quot;diagnosis&quot;                        &quot;ACE_CD143_Angiotensin_Converti&quot;  
-##   [3] &quot;ACTH_Adrenocorticotropic_Hormon&quot;  &quot;AXL&quot;                             
-##   [5] &quot;Adiponectin&quot;                      &quot;Alpha_1_Antichymotrypsin&quot;        
-##   [7] &quot;Alpha_1_Antitrypsin&quot;              &quot;Alpha_1_Microglobulin&quot;           
-##   [9] &quot;Alpha_2_Macroglobulin&quot;            &quot;Angiopoietin_2_ANG_2&quot;            
-##  [11] &quot;Angiotensinogen&quot;                  &quot;Apolipoprotein_A_IV&quot;             
-##  [13] &quot;Apolipoprotein_A1&quot;                &quot;Apolipoprotein_A2&quot;               
-##  [15] &quot;Apolipoprotein_B&quot;                 &quot;Apolipoprotein_CI&quot;               
-##  [17] &quot;Apolipoprotein_CIII&quot;              &quot;Apolipoprotein_D&quot;                
-##  [19] &quot;Apolipoprotein_E&quot;                 &quot;Apolipoprotein_H&quot;                
-##  [21] &quot;B_Lymphocyte_Chemoattractant_BL&quot;  &quot;BMP_6&quot;                           
-##  [23] &quot;Beta_2_Microglobulin&quot;             &quot;Betacellulin&quot;                    
-##  [25] &quot;C_Reactive_Protein&quot;               &quot;CD40&quot;                            
-##  [27] &quot;CD5L&quot;                             &quot;Calbindin&quot;                       
-##  [29] &quot;Calcitonin&quot;                       &quot;CgA&quot;                             
-##  [31] &quot;Clusterin_Apo_J&quot;                  &quot;Complement_3&quot;                    
-##  [33] &quot;Complement_Factor_H&quot;              &quot;Connective_Tissue_Growth_Factor&quot; 
-##  [35] &quot;Cortisol&quot;                         &quot;Creatine_Kinase_MB&quot;              
-##  [37] &quot;Cystatin_C&quot;                       &quot;EGF_R&quot;                           
-##  [39] &quot;EN_RAGE&quot;                          &quot;ENA_78&quot;                          
-##  [41] &quot;Eotaxin_3&quot;                        &quot;FAS&quot;                             
-##  [43] &quot;FSH_Follicle_Stimulation_Hormon&quot;  &quot;Fas_Ligand&quot;                      
-##  [45] &quot;Fatty_Acid_Binding_Protein&quot;       &quot;Ferritin&quot;                        
-##  [47] &quot;Fetuin_A&quot;                         &quot;Fibrinogen&quot;                      
-##  [49] &quot;GRO_alpha&quot;                        &quot;Gamma_Interferon_induced_Monokin&quot;
-##  [51] &quot;Glutathione_S_Transferase_alpha&quot;  &quot;HB_EGF&quot;                          
-##  [53] &quot;HCC_4&quot;                            &quot;Hepatocyte_Growth_Factor_HGF&quot;    
-##  [55] &quot;I_309&quot;                            &quot;ICAM_1&quot;                          
-##  [57] &quot;IGF_BP_2&quot;                         &quot;IL_11&quot;                           
-##  [59] &quot;IL_13&quot;                            &quot;IL_16&quot;                           
-##  [61] &quot;IL_17E&quot;                           &quot;IL_1alpha&quot;                       
-##  [63] &quot;IL_3&quot;                             &quot;IL_4&quot;                            
-##  [65] &quot;IL_5&quot;                             &quot;IL_6&quot;                            
-##  [67] &quot;IL_6_Receptor&quot;                    &quot;IL_7&quot;                            
-##  [69] &quot;IL_8&quot;                             &quot;IP_10_Inducible_Protein_10&quot;      
-##  [71] &quot;IgA&quot;                              &quot;Insulin&quot;                         
-##  [73] &quot;Kidney_Injury_Molecule_1_KIM_1&quot;   &quot;LOX_1&quot;                           
-##  [75] &quot;Leptin&quot;                           &quot;Lipoprotein_a&quot;                   
-##  [77] &quot;MCP_1&quot;                            &quot;MCP_2&quot;                           
-##  [79] &quot;MIF&quot;                              &quot;MIP_1alpha&quot;                      
-##  [81] &quot;MIP_1beta&quot;                        &quot;MMP_2&quot;                           
-##  [83] &quot;MMP_3&quot;                            &quot;MMP10&quot;                           
-##  [85] &quot;MMP7&quot;                             &quot;Myoglobin&quot;                       
-##  [87] &quot;NT_proBNP&quot;                        &quot;NrCAM&quot;                           
-##  [89] &quot;Osteopontin&quot;                      &quot;PAI_1&quot;                           
-##  [91] &quot;PAPP_A&quot;                           &quot;PLGF&quot;                            
-##  [93] &quot;PYY&quot;                              &quot;Pancreatic_polypeptide&quot;          
-##  [95] &quot;Prolactin&quot;                        &quot;Prostatic_Acid_Phosphatase&quot;      
-##  [97] &quot;Protein_S&quot;                        &quot;Pulmonary_and_Activation_Regulat&quot;
-##  [99] &quot;RANTES&quot;                           &quot;Resistin&quot;                        
-## [101] &quot;S100b&quot;                            &quot;SGOT&quot;                            
-## [103] &quot;SHBG&quot;                             &quot;SOD&quot;                             
-## [105] &quot;Serum_Amyloid_P&quot;                  &quot;Sortilin&quot;                        
-## [107] &quot;Stem_Cell_Factor&quot;                 &quot;TGF_alpha&quot;                       
-## [109] &quot;TIMP_1&quot;                           &quot;TNF_RII&quot;                         
-## [111] &quot;TRAIL_R3&quot;                         &quot;TTR_prealbumin&quot;                  
-## [113] &quot;Tamm_Horsfall_Protein_THP&quot;        &quot;Thrombomodulin&quot;                  
-## [115] &quot;Thrombopoietin&quot;                   &quot;Thymus_Expressed_Chemokine_TECK&quot; 
-## [117] &quot;Thyroid_Stimulating_Hormone&quot;      &quot;Thyroxine_Binding_Globulin&quot;      
-## [119] &quot;Tissue_Factor&quot;                    &quot;Transferrin&quot;                     
-## [121] &quot;Trefoil_Factor_3_TFF3&quot;            &quot;VCAM_1&quot;                          
-## [123] &quot;VEGF&quot;                             &quot;Vitronectin&quot;                     
-## [125] &quot;von_Willebrand_Factor&quot;            &quot;age&quot;                             
-## [127] &quot;tau&quot;                              &quot;p_tau&quot;                           
-## [129] &quot;Ab_42&quot;                            &quot;male&quot;                            
-## [131] &quot;Genotype&quot;
+<pre><code>##   [1] &quot;diagnosis&quot;                        &quot;ACE_CD143_Angiotensin_Converti&quot;   &quot;ACTH_Adrenocorticotropic_Hormon&quot;  &quot;AXL&quot;                             
+##   [5] &quot;Adiponectin&quot;                      &quot;Alpha_1_Antichymotrypsin&quot;         &quot;Alpha_1_Antitrypsin&quot;              &quot;Alpha_1_Microglobulin&quot;           
+##   [9] &quot;Alpha_2_Macroglobulin&quot;            &quot;Angiopoietin_2_ANG_2&quot;             &quot;Angiotensinogen&quot;                  &quot;Apolipoprotein_A_IV&quot;             
+##  [13] &quot;Apolipoprotein_A1&quot;                &quot;Apolipoprotein_A2&quot;                &quot;Apolipoprotein_B&quot;                 &quot;Apolipoprotein_CI&quot;               
+##  [17] &quot;Apolipoprotein_CIII&quot;              &quot;Apolipoprotein_D&quot;                 &quot;Apolipoprotein_E&quot;                 &quot;Apolipoprotein_H&quot;                
+##  [21] &quot;B_Lymphocyte_Chemoattractant_BL&quot;  &quot;BMP_6&quot;                            &quot;Beta_2_Microglobulin&quot;             &quot;Betacellulin&quot;                    
+##  [25] &quot;C_Reactive_Protein&quot;               &quot;CD40&quot;                             &quot;CD5L&quot;                             &quot;Calbindin&quot;                       
+##  [29] &quot;Calcitonin&quot;                       &quot;CgA&quot;                              &quot;Clusterin_Apo_J&quot;                  &quot;Complement_3&quot;                    
+##  [33] &quot;Complement_Factor_H&quot;              &quot;Connective_Tissue_Growth_Factor&quot;  &quot;Cortisol&quot;                         &quot;Creatine_Kinase_MB&quot;              
+##  [37] &quot;Cystatin_C&quot;                       &quot;EGF_R&quot;                            &quot;EN_RAGE&quot;                          &quot;ENA_78&quot;                          
+##  [41] &quot;Eotaxin_3&quot;                        &quot;FAS&quot;                              &quot;FSH_Follicle_Stimulation_Hormon&quot;  &quot;Fas_Ligand&quot;                      
+##  [45] &quot;Fatty_Acid_Binding_Protein&quot;       &quot;Ferritin&quot;                         &quot;Fetuin_A&quot;                         &quot;Fibrinogen&quot;                      
+##  [49] &quot;GRO_alpha&quot;                        &quot;Gamma_Interferon_induced_Monokin&quot; &quot;Glutathione_S_Transferase_alpha&quot;  &quot;HB_EGF&quot;                          
+##  [53] &quot;HCC_4&quot;                            &quot;Hepatocyte_Growth_Factor_HGF&quot;     &quot;I_309&quot;                            &quot;ICAM_1&quot;                          
+##  [57] &quot;IGF_BP_2&quot;                         &quot;IL_11&quot;                            &quot;IL_13&quot;                            &quot;IL_16&quot;                           
+##  [61] &quot;IL_17E&quot;                           &quot;IL_1alpha&quot;                        &quot;IL_3&quot;                             &quot;IL_4&quot;                            
+##  [65] &quot;IL_5&quot;                             &quot;IL_6&quot;                             &quot;IL_6_Receptor&quot;                    &quot;IL_7&quot;                            
+##  [69] &quot;IL_8&quot;                             &quot;IP_10_Inducible_Protein_10&quot;       &quot;IgA&quot;                              &quot;Insulin&quot;                         
+##  [73] &quot;Kidney_Injury_Molecule_1_KIM_1&quot;   &quot;LOX_1&quot;                            &quot;Leptin&quot;                           &quot;Lipoprotein_a&quot;                   
+##  [77] &quot;MCP_1&quot;                            &quot;MCP_2&quot;                            &quot;MIF&quot;                              &quot;MIP_1alpha&quot;                      
+##  [81] &quot;MIP_1beta&quot;                        &quot;MMP_2&quot;                            &quot;MMP_3&quot;                            &quot;MMP10&quot;                           
+##  [85] &quot;MMP7&quot;                             &quot;Myoglobin&quot;                        &quot;NT_proBNP&quot;                        &quot;NrCAM&quot;                           
+##  [89] &quot;Osteopontin&quot;                      &quot;PAI_1&quot;                            &quot;PAPP_A&quot;                           &quot;PLGF&quot;                            
+##  [93] &quot;PYY&quot;                              &quot;Pancreatic_polypeptide&quot;           &quot;Prolactin&quot;                        &quot;Prostatic_Acid_Phosphatase&quot;      
+##  [97] &quot;Protein_S&quot;                        &quot;Pulmonary_and_Activation_Regulat&quot; &quot;RANTES&quot;                           &quot;Resistin&quot;                        
+## [101] &quot;S100b&quot;                            &quot;SGOT&quot;                             &quot;SHBG&quot;                             &quot;SOD&quot;                             
+## [105] &quot;Serum_Amyloid_P&quot;                  &quot;Sortilin&quot;                         &quot;Stem_Cell_Factor&quot;                 &quot;TGF_alpha&quot;                       
+## [109] &quot;TIMP_1&quot;                           &quot;TNF_RII&quot;                          &quot;TRAIL_R3&quot;                         &quot;TTR_prealbumin&quot;                  
+## [113] &quot;Tamm_Horsfall_Protein_THP&quot;        &quot;Thrombomodulin&quot;                   &quot;Thrombopoietin&quot;                   &quot;Thymus_Expressed_Chemokine_TECK&quot; 
+## [117] &quot;Thyroid_Stimulating_Hormone&quot;      &quot;Thyroxine_Binding_Globulin&quot;       &quot;Tissue_Factor&quot;                    &quot;Transferrin&quot;                     
+## [121] &quot;Trefoil_Factor_3_TFF3&quot;            &quot;VCAM_1&quot;                           &quot;VEGF&quot;                             &quot;Vitronectin&quot;                     
+## [125] &quot;von_Willebrand_Factor&quot;            &quot;age&quot;                              &quot;tau&quot;                              &quot;p_tau&quot;                           
+## [129] &quot;Ab_42&quot;                            &quot;male&quot;                             &quot;Genotype&quot;
 </code></pre>
 
 <pre><code class="r">dim(adData)
@@ -513,27 +426,20 @@ testing = adData[-inTrain, ]
 summary(tr)
 </code></pre>
 
-<pre><code>##      IL_11          IL_13          IL_16           IL_17E    
-##  Min.   :2.03   Min.   :1.24   Min.   :0.957   Min.   :1.05  
-##  1st Qu.:3.71   1st Qu.:1.27   1st Qu.:2.461   1st Qu.:4.15  
-##  Median :4.80   Median :1.28   Median :2.924   Median :4.80  
-##  Mean   :4.70   Mean   :1.28   Mean   :2.915   Mean   :4.91  
-##  3rd Qu.:5.68   3rd Qu.:1.29   3rd Qu.:3.351   3rd Qu.:5.63  
-##  Max.   :7.80   Max.   :1.32   Max.   :4.937   Max.   :8.95  
-##    IL_1alpha          IL_3            IL_4            IL_5        
-##  Min.   :-8.52   Min.   :-5.92   Min.   :0.531   Min.   :-1.0498  
-##  1st Qu.:-7.85   1st Qu.:-4.27   1st Qu.:1.459   1st Qu.:-0.0943  
-##  Median :-7.54   Median :-3.96   Median :1.808   Median : 0.1823  
-##  Mean   :-7.54   Mean   :-3.95   Mean   :1.765   Mean   : 0.1876  
-##  3rd Qu.:-7.26   3rd Qu.:-3.58   3rd Qu.:2.079   3rd Qu.: 0.4700  
-##  Max.   :-5.95   Max.   :-2.45   Max.   :3.045   Max.   : 1.1632  
-##       IL_6         IL_6_Receptor          IL_7           IL_8     
-##  Min.   :-1.5343   Min.   :-0.7456   Min.   :0.56   Min.   :1.57  
-##  1st Qu.:-0.4127   1st Qu.:-0.1475   1st Qu.:2.15   1st Qu.:1.68  
-##  Median :-0.0934   Median : 0.0967   Median :2.92   Median :1.71  
-##  Mean   :-0.1386   Mean   : 0.0789   Mean   :2.91   Mean   :1.70  
-##  3rd Qu.: 0.1857   3rd Qu.: 0.2730   3rd Qu.:3.71   3rd Qu.:1.73  
-##  Max.   : 1.8138   Max.   : 0.7705   Max.   :5.71   Max.   :1.81
+<pre><code>##      IL_11          IL_13          IL_16           IL_17E       IL_1alpha          IL_3            IL_4            IL_5              IL_6        
+##  Min.   :2.03   Min.   :1.24   Min.   :0.957   Min.   :1.05   Min.   :-8.52   Min.   :-5.92   Min.   :0.531   Min.   :-1.0498   Min.   :-1.5343  
+##  1st Qu.:3.71   1st Qu.:1.27   1st Qu.:2.461   1st Qu.:4.15   1st Qu.:-7.85   1st Qu.:-4.27   1st Qu.:1.459   1st Qu.:-0.0943   1st Qu.:-0.4127  
+##  Median :4.80   Median :1.28   Median :2.924   Median :4.80   Median :-7.54   Median :-3.96   Median :1.808   Median : 0.1823   Median :-0.0934  
+##  Mean   :4.70   Mean   :1.28   Mean   :2.915   Mean   :4.91   Mean   :-7.54   Mean   :-3.95   Mean   :1.765   Mean   : 0.1876   Mean   :-0.1386  
+##  3rd Qu.:5.68   3rd Qu.:1.29   3rd Qu.:3.351   3rd Qu.:5.63   3rd Qu.:-7.26   3rd Qu.:-3.58   3rd Qu.:2.079   3rd Qu.: 0.4700   3rd Qu.: 0.1857  
+##  Max.   :7.80   Max.   :1.32   Max.   :4.937   Max.   :8.95   Max.   :-5.95   Max.   :-2.45   Max.   :3.045   Max.   : 1.1632   Max.   : 1.8138  
+##  IL_6_Receptor          IL_7           IL_8     
+##  Min.   :-0.7456   Min.   :0.56   Min.   :1.57  
+##  1st Qu.:-0.1475   1st Qu.:2.15   1st Qu.:1.68  
+##  Median : 0.0967   Median :2.92   Median :1.71  
+##  Mean   : 0.0789   Mean   :2.91   Mean   :1.70  
+##  3rd Qu.: 0.2730   3rd Qu.:3.71   3rd Qu.:1.73  
+##  Max.   : 0.7705   Max.   :5.71   Max.   :1.81
 </code></pre>
 
 <pre><code class="r">preProc &lt;- preProcess(tr, method = &quot;pca&quot;, thresh = 0.8)
@@ -585,42 +491,21 @@ str(train_il)
 diagnosis[inTrain]
 </code></pre>
 
-<pre><code>##   [1] Impaired Impaired Impaired Impaired Impaired Impaired Impaired
-##   [8] Impaired Impaired Impaired Impaired Impaired Impaired Impaired
-##  [15] Impaired Impaired Impaired Impaired Impaired Impaired Impaired
-##  [22] Impaired Impaired Impaired Impaired Impaired Impaired Impaired
-##  [29] Impaired Impaired Impaired Impaired Impaired Impaired Impaired
-##  [36] Impaired Impaired Impaired Impaired Impaired Impaired Impaired
-##  [43] Impaired Impaired Impaired Impaired Impaired Impaired Impaired
-##  [50] Impaired Impaired Impaired Impaired Impaired Impaired Impaired
-##  [57] Impaired Impaired Impaired Impaired Impaired Impaired Impaired
-##  [64] Impaired Impaired Impaired Impaired Impaired Impaired Control 
-##  [71] Control  Control  Control  Control  Control  Control  Control 
-##  [78] Control  Control  Control  Control  Control  Control  Control 
-##  [85] Control  Control  Control  Control  Control  Control  Control 
-##  [92] Control  Control  Control  Control  Control  Control  Control 
-##  [99] Control  Control  Control  Control  Control  Control  Control 
-## [106] Control  Control  Control  Control  Control  Control  Control 
-## [113] Control  Control  Control  Control  Control  Control  Control 
-## [120] Control  Control  Control  Control  Control  Control  Control 
-## [127] Control  Control  Control  Control  Control  Control  Control 
-## [134] Control  Control  Control  Control  Control  Control  Control 
-## [141] Control  Control  Control  Control  Control  Control  Control 
-## [148] Control  Control  Control  Control  Control  Control  Control 
-## [155] Control  Control  Control  Control  Control  Control  Control 
-## [162] Control  Control  Control  Control  Control  Control  Control 
-## [169] Control  Control  Control  Control  Control  Control  Control 
-## [176] Control  Control  Control  Control  Control  Control  Control 
-## [183] Control  Control  Control  Control  Control  Control  Control 
-## [190] Control  Control  Control  Control  Control  Control  Control 
-## [197] Control  Control  Control  Control  Control  Control  Control 
-## [204] Control  Control  Control  Control  Control  Control  Control 
-## [211] Control  Control  Control  Control  Control  Control  Control 
-## [218] Control  Control  Control  Control  Control  Control  Control 
-## [225] Control  Control  Control  Control  Control  Control  Control 
-## [232] Control  Control  Control  Control  Control  Control  Control 
-## [239] Control  Control  Control  Control  Control  Control  Control 
-## [246] Control  Control  Control  Control  Control  Control 
+<pre><code>##   [1] Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired
+##  [18] Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired
+##  [35] Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired
+##  [52] Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired
+##  [69] Impaired Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control 
+##  [86] Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control 
+## [103] Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control 
+## [120] Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control 
+## [137] Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control 
+## [154] Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control 
+## [171] Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control 
+## [188] Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control 
+## [205] Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control 
+## [222] Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control 
+## [239] Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control 
 ## Levels: Impaired Control
 </code></pre>
 
@@ -636,42 +521,21 @@ ab &lt;- cbind(train_il, diagnosis[inTrain])
 ab$diagnosis[inTrain]
 </code></pre>
 
-<pre><code>##   [1] Impaired Impaired Impaired Impaired Impaired Impaired Impaired
-##   [8] Impaired Impaired Impaired Impaired Impaired Impaired Impaired
-##  [15] Impaired Impaired Impaired Impaired Impaired Impaired Impaired
-##  [22] Impaired Impaired Impaired Control  Control  Control  Control 
-##  [29] Control  Control  Control  Control  Control  Control  Control 
-##  [36] Control  Control  Control  Control  Control  Control  Control 
-##  [43] Control  Control  Control  Control  Control  Control  Control 
-##  [50] Control  Control  Control  Control  Control  Control  Control 
-##  [57] Control  &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;    
-##  [64] &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     Impaired
-##  [71] Impaired Impaired Impaired Impaired Impaired Impaired Impaired
-##  [78] Impaired Impaired Impaired Impaired Impaired Impaired Impaired
-##  [85] Impaired Impaired Impaired Impaired Impaired Impaired Impaired
-##  [92] Impaired Impaired Impaired Impaired Impaired Impaired Impaired
-##  [99] Impaired Control  Control  Control  Control  Control  Control 
-## [106] Control  Control  Control  Control  Control  Control  Control 
-## [113] Control  Control  Control  Control  Control  Control  Control 
-## [120] Control  Control  Control  Control  Control  Control  Control 
-## [127] Control  Control  Control  Control  Control  Control  Control 
-## [134] Control  Control  Control  Control  Control  Control  Control 
-## [141] Control  Control  Control  Control  Control  Control  Control 
-## [148] Control  Control  Control  Control  Control  Control  Control 
-## [155] Control  Control  Control  Control  Control  Control  Control 
-## [162] Control  Control  Control  Control  Control  Control  Control 
-## [169] Control  Control  Control  Control  Control  Control  Control 
-## [176] Control  Control  Control  Control  Control  Control  Control 
-## [183] Control  Control  Control  Control  Control  Control  Control 
-## [190] Control  Control  Control  Control  Control  Control  Control 
-## [197] Control  Control  Control  Control  Control  Control  &lt;NA&gt;    
-## [204] &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;    
-## [211] &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;    
-## [218] &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;    
-## [225] &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;    
-## [232] &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;    
-## [239] &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;    
-## [246] &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;    
+<pre><code>##   [1] Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired
+##  [18] Impaired Impaired Impaired Impaired Impaired Impaired Impaired Control  Control  Control  Control  Control  Control  Control  Control  Control  Control 
+##  [35] Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control 
+##  [52] Control  Control  Control  Control  Control  Control  &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;    
+##  [69] &lt;NA&gt;     Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired
+##  [86] Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Impaired Control  Control  Control 
+## [103] Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control 
+## [120] Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control 
+## [137] Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control 
+## [154] Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control 
+## [171] Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control 
+## [188] Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  Control  &lt;NA&gt;     &lt;NA&gt;    
+## [205] &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;    
+## [222] &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;    
+## [239] &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;    
 ## Levels: Impaired Control
 </code></pre>
 
