@@ -20,7 +20,7 @@ data(concrete)
 ```
 
 ```{r}
-?concrete
+#?concrete
 ```
 
 ```{r}
@@ -78,25 +78,14 @@ qplot(log(Superplasticizer + 2), data=concrete)
 qplot(Superplasticizer, data=mixtures)
 ```
 
-```{r}
-qplot(Superplasticizer, data=training)
-```
 
 ```{r}
-qplot(Superplasticizer, data=testing)
-```
-
-
-```{r}
-#rm(list=ls())
 set.seed(3433)
-#library(AppliedPredictiveModeling)
 data(AlzheimerDisease)
 ```
 
 ```{r}
-dim(diagnosis)
-attributes(diagnosis)
+names(predictors)
 ```
 
 ```{r}
@@ -104,13 +93,16 @@ head(diagnosis)
 ```
 
 ```{r}
-head(predictors)
+attributes(diagnosis)
 ```
 
 ```{r}
-adData = data.frame(diagnosis,predictors);head(adData)
+adData = data.frame(diagnosis,predictors);names(adData)
 ```
 
+```{r}
+dim(adData)
+```
 
 ```{r}
 inTrain = createDataPartition(adData$diagnosis, p = 3/4)[[1]]
@@ -118,15 +110,15 @@ training = adData[ inTrain,]
 testing = adData[-inTrain,]
 ```
 
-
-
 ```{r}
 tr  <- training[colnames(training)[grepl('^IL',colnames(training))]]
 summary(tr)
+```
+
+```{r}
 preProc  <- preProcess(tr,method="pca",thresh = 0.8)
 preProc
 ```
-
 
 ```{r}
 rm(list=ls())
@@ -137,6 +129,9 @@ adData = data.frame(diagnosis,predictors)
 inTrain = createDataPartition(adData$diagnosis, p = 3/4)[[1]]
 training = adData[ inTrain,]
 testing = adData[-inTrain,]
+```
+
+```{r}
 train_il  <- training[colnames(training)[grepl('^IL',colnames(training))]]
 str(train_il)
 ```
