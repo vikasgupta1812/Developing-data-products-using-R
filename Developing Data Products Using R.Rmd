@@ -1,0 +1,154 @@
+Developing Data Products using R
+========================================================
+
+
+```{r}
+rm(list=ls())
+```
+
+
+AppliedPredictiveModeling package is used to reproduce the analyses in the text. 
+
+```{r}
+library(caret)
+library(AppliedPredictiveModeling)
+```
+
+
+```{r}
+data(concrete)
+```
+
+```{r}
+?concrete
+```
+
+```{r}
+summary(concrete)
+```
+
+```{r}
+names(concrete)
+```
+
+```{r}
+dim(concrete)
+```
+
+Check total missing values 
+```{r}
+sum(is.na(concrete))
+```
+
+
+Partition the dataset
+```{r}
+set.seed(975)
+inTrain = createDataPartition(mixtures$CompressiveStrength, p = 3/4)[[1]]
+```
+
+into test and traininig datasets
+```{r}
+training = mixtures[ inTrain,]
+testing = mixtures[-inTrain,]
+```
+
+```{r}
+head(training)
+```
+
+```{r}
+str(training)
+```
+
+
+```{r}
+str(concrete)
+```
+
+```{r}
+qplot(Superplasticizer, data=concrete)
+```
+
+```{r}
+qplot(log(Superplasticizer + 2), data=concrete)
+```
+
+```{r}
+qplot(Superplasticizer, data=mixtures)
+```
+
+```{r}
+qplot(Superplasticizer, data=training)
+```
+
+```{r}
+qplot(Superplasticizer, data=testing)
+```
+
+
+```{r}
+#rm(list=ls())
+set.seed(3433)
+#library(AppliedPredictiveModeling)
+data(AlzheimerDisease)
+```
+
+```{r}
+dim(diagnosis)
+attributes(diagnosis)
+```
+
+```{r}
+head(diagnosis)
+```
+
+```{r}
+head(predictors)
+```
+
+```{r}
+adData = data.frame(diagnosis,predictors);head(adData)
+```
+
+
+```{r}
+inTrain = createDataPartition(adData$diagnosis, p = 3/4)[[1]]
+training = adData[ inTrain,]
+testing = adData[-inTrain,]
+```
+
+
+
+```{r}
+tr  <- training[colnames(training)[grepl('^IL',colnames(training))]]
+summary(tr)
+preProc  <- preProcess(tr,method="pca",thresh = 0.8)
+preProc
+```
+
+
+```{r}
+rm(list=ls())
+set.seed(3433)
+library(AppliedPredictiveModeling)
+data(AlzheimerDisease)
+adData = data.frame(diagnosis,predictors)
+inTrain = createDataPartition(adData$diagnosis, p = 3/4)[[1]]
+training = adData[ inTrain,]
+testing = adData[-inTrain,]
+train_il  <- training[colnames(training)[grepl('^IL',colnames(training))]]
+str(train_il)
+```
+
+Prediction function # 1 
+```{r}
+library(caret)
+diagnosis[inTrain]
+length(diagnosis[inTrain])
+modelFit  <- train(diagnosis[inTrain] ~ ., method="glm",data=train_il)
+
+ab  <- cbind(train_il,diagnosis[inTrain])
+ab$diagnosis[inTrain]
+modelFit  <- train(ab$diagnosis[inTrain] ~ ., method="glm",data=ab)
+```

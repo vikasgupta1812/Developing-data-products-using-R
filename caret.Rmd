@@ -1,0 +1,252 @@
+A Short Introduction to caret Package
+========================================================
+
+
+
+mlbench for ?? 
+
+```{r}
+rm(list=ls())
+library(caret)
+library(mlbench)
+```
+
+
+```{r}
+data(Sonar)
+set.seed(107)
+```
+
+```{r}
+summary(Sonar)
+?Sonar
+```
+
+```{r}
+inTrain  <- createDataPartition(y = Sonar$Class,
+                                p = 0.75,
+                                list = FALSE)
+```
+
+
+```{r}
+str(inTrain)
+```
+
+```{r}
+training  <- Sonar[inTrain,]
+testing  <- Sonar[-inTrain,]
+```
+
+
+
+```{r}
+nrow(training)
+nrow(testing)
+```
+
+Fit the model using pls.. what is pls ?
+```{r}
+plsFit  <- train(Class ~ .,
+  data = training,
+  method = "pls",
+  preProc = c("center","scale")
+  )
+```
+
+returned data 
+```{r}
+names(plsFit)
+```
+
+default values to be displayed. 
+```{r}
+plsFit
+```
+
+
+```{r}
+plsFit$method
+```
+
+```{r}
+plsFit$modelInfo
+```
+
+```{r}
+plsFit$modelType
+```
+
+```{r}
+plsFit$results
+```
+
+```{r}
+plsFit$pred
+```
+
+```{r}
+plsFit$bestTune
+```
+
+```{r}
+plsFit$call
+```
+
+```{r}
+plsFit$dots
+```
+
+```{r}
+plsFit$metric
+```
+
+```{r}
+plsFit$control
+```
+
+```{r}
+plsFit$finalModel
+```
+
+```{r}
+plsFit$preProcess
+```
+
+```{r}
+plsFit$trainingData
+```
+
+```{r}
+plsFit$resample
+```
+
+```{r}
+plsFit$resampledCM
+```
+
+```{r}
+plsFit$perfNames
+```
+
+```{r}
+plsFit$maximize
+```
+
+```{r}
+plsFit$yLimits
+```
+
+```{r}
+plsFit$times
+```
+
+```{r}
+plsFit$terms
+```
+
+```{r}
+plsFit$coefnames
+```
+
+```{r}
+plsFit$xlevels
+```
+
+Add preprocessing step
+```{r}
+plsFit  <- train(Class ~ .,
+  data = training,
+  method = "pls",
+  tuneLength=15,
+  preProc = c("center","scale")
+  );plsFit
+```
+
+Change the resampling method
+
+```{r}
+ctrl  <- trainControl(method="repeatedcv",repeats=3)
+names(ctrl)
+plsFit  <- train(Class ~ .,
+  data = training,
+  method = "pls",
+  tuneLength=15,
+  trControl= ctrl,
+  preProc = c("center","scale")
+  );plsFit
+```
+
+Choose different measures of performance
+
+```{r}
+ctrl  <- trainControl(method="repeatedcv",repeats=3,
+                      classProbs=TRUE,
+                      summaryFunction=twoClassSummary)
+names(ctrl)
+plsFit  <- train(Class ~ .,
+  data = training,
+  method = "pls",
+  tuneLength=15,
+  trControl= ctrl,
+  mertic="ROC",
+  preProc = c("center","scale")
+  );plsFit
+```
+
+plot the model 
+```{r}
+plot(plsFit)
+```
+
+predict new samples 
+
+```{r}
+plsClasses  <- predict(plsFit,newdata=testing)
+str(plsClasses)
+```
+
+Predict with Probabilities 
+```{r}
+plsProbs  <- predict(plsFit, newdata=testing, type="prob");head(plsProbs)
+```
+
+
+confusion Matrix
+```{r}
+confusionMatrix(data=plsClasses,testing$Class)
+```
+
+Fitting another Model 
+
+```{r}
+rdaGrid = data.frame(gamma = (0:4)/4, lambda = 3/4);rdaGrid
+set.seed(123)
+rdaFit  <- train(Class ~ .,
+                 data = training,
+                 method = "rda",
+                 tuneGrid = rdaGrid, 
+                 trControl = ctrl,
+                 metric = "ROC");rdaFit
+```
+
+
+
+```{r}
+rdaClasses   <- predict(rdaFit, newdata = testing)
+```
+
+```{r}
+confusionMatrix(rdaClasses,testing$Class)
+```
+
+
+
+```{r}
+resamps  <- resamples(list(pls = plsFit, rda = rdaFit))
+summary(resamps)
+```
+
+
+
+
