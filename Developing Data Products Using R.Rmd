@@ -17,11 +17,11 @@ library(caret)
 library(AppliedPredictiveModeling)
 ```
 
-
 ```{r}
 data(concrete)
 ```
 
+Concrete - Data sets from different sources that can be used for modeling the compressive strength of concrete formulations as a functions of their ingredients and age.
 ```{r}
 #?concrete
 ```
@@ -43,7 +43,6 @@ Check total missing values
 sum(is.na(concrete))
 ```
 
-
 Partition the dataset
 ```{r}
 set.seed(975)
@@ -64,9 +63,8 @@ head(training)
 str(training)
 ```
 
-
 ```{r}
-str(concrete)
+#str(concrete)
 ```
 
 ```{r}
@@ -77,9 +75,7 @@ qplot(Superplasticizer, data=concrete)
 qplot(log(Superplasticizer + 2), data=concrete)
 ```
 
-```{r}
-qplot(Superplasticizer, data=mixtures)
-```
+The skewness cannot be removed, becuase the values are exactly the same. 
 
 
 ```{r}
@@ -95,6 +91,7 @@ names(predictors)
 head(diagnosis)
 ```
 
+Factor with two levels - Impaired and Control
 ```{r}
 attributes(diagnosis)
 ```
@@ -113,11 +110,13 @@ training = adData[ inTrain,]
 testing = adData[-inTrain,]
 ```
 
+Select the names which start with IL only
 ```{r}
 tr  <- training[colnames(training)[grepl('^IL',colnames(training))]]
 summary(tr)
 ```
 
+Using pca recuve the number of features to account for 80% variance. 
 ```{r}
 preProc  <- preProcess(tr,method="pca",thresh = 0.8)
 preProc
@@ -142,11 +141,235 @@ str(train_il)
 Prediction function # 1 
 ```{r}
 library(caret)
-diagnosis[inTrain]
+head(diagnosis[inTrain])
 length(diagnosis[inTrain])
+```
+
+glm - Generalized Linear Models 
+Fit the dataset using `glm`. 
+```{r}
 modelFit  <- train(diagnosis[inTrain] ~ ., method="glm",data=train_il)
 
 ab  <- cbind(train_il,diagnosis[inTrain])
 ab$diagnosis[inTrain]
 modelFit  <- train(ab$diagnosis[inTrain] ~ ., method="glm",data=ab)
 ```
+
+
+Using Plotly 
+------------
+
+Initialize a Plotly object :
+```{r}
+library(plotly)
+py <- plotly()
+```
+
+Now you can make interactive, online graphs with `ggplot2` syntax using `py$ggplotly()`
+
+
+```{r Example_1}
+(ggiris <- qplot(Petal.Width, Sepal.Length, data = iris, color = Species))
+
+r <- py$ggplotly(ggiris)
+r$response$url
+```
+
+
+
+```{r Exmaple_2}
+library(plotly)
+
+dsamp <- diamonds[sample(nrow(diamonds), 1000), ]
+d <- qplot(carat, price, data=dsamp, colour=clarity);d
+
+py$ggplotly()
+```
+
+
+
+Manipulate
+----------
+
+
+```{r Manipulate}
+library(manipulate)
+library(HistData)
+data(Galton)
+myHist <- function(mu){
+  hist(Galton$child,col="blue",breaks=100)
+  lines(c(mu, mu), c(0, 150),col="red",lwd=5)
+  mse <- mean((Galton$child - mu)^2)
+  text(63, 150, paste("mu = ", mu))
+  text(63, 140, paste("MSE = ", round(mse, 2)))
+}
+manipulate(myHist(mu), mu = slider(62, 74, step = 0.5))
+
+```
+
+
+```{r Manipulate 2}
+library(manipulate)
+myPlot <- function(s) {
+    plot(cars$dist - mean(cars$dist), cars$speed - mean(cars$speed))
+    abline(0, s)
+}
+
+
+manipulate(myPlot(s), s = slider(0, 2, step = 0.1))
+```
+
+
+
+
+
+
+rCharts
+--------
+```{r nplot}
+require(rCharts)
+haireye  <- as.data.frame(HairEyeColor)
+
+n1  <- nPlot(Freq ~ Hair, group = 'Eye', type = 'multiBarChart',
+             data = subset(haireye, Sex == 'Male'))
+
+n1$save('figure/n1.html', cdn = TRUE)
+cat('<iframe src="figure/n1.html" width=100%, height=600></iframe>')
+```
+
+
+```{r}
+nPlot(Freq ~ Hair, group = 'Eye', type = 'multiBarChart',
+             data = subset(haireye, Sex == 'Male'))
+```
+
+bring up the plot 
+```{r}
+n1
+```
+
+Displays the html required for the plot 
+```{r}
+n1$html()
+```
+
+
+Another example 
+```{r Facetted Scatterplot}
+names(iris) = gsub("\\.","",names(iris))
+r1  <- rPlot(SepalLength ~ SepalWidth | Species, data = iris, 
+             color = "Species", type = "point")
+r1$save("figure/r1.html", cdn = TRUE)
+cat('<iframe src="figure/r1.html" width=100%, height=600></iframe>')
+```
+
+
+```{r Facetter Scatterplot}
+hair_eye  <- as.data.frame(HairEyeColor)
+r2  <-rPlot(Freq ~ Hair| Eye, color = "eye", data = hair_eye, type="bar")
+r2
+r2$save("figure/r2.html", cdn = TRUE)
+cat('<iframe src = "figure/r2.html" width=100%, height=600></iframe>')
+```
+
+
+How to get the js, html or publish an rChart 
+
+```{r}
+r1  <- rPlot(mpg ~ wt| am + vs, data = mtcars, type="point", color = "gear"); r1
+r1$print("chart1") # Print out the js 
+r1$save('myPlot.html') # Save the html file.
+# ------
+# not working 
+r1$publish('myPlot.html', host='gist') # save to gist, rjson required 
+r1$publish('myPlot', host = 'rpubs') # Save ti rpubs
+```
+
+
+```{r}
+r1$publish
+```
+
+```{r morris}
+data(economics, package="ggplot2")
+?economics
+str(economics)
+econ  <- transform(economics, data = as.character(date))
+str(econ)
+
+m1  <- mPlot(x = "date", y = c("psavert", "uempmed"), type="Line", data = econ); m1
+m1$set(pointSize=0, lineWidth=1);m1
+
+```
+
+
+
+```{r xCharts}
+require(reshape2)
+uspexp  <- melt(USPersonalExpenditure)
+View(USPersonalExpenditure)
+View(uspexp)
+names(uspexp)[1:2]  <- c("category", "year")
+x1  <- xPlot(value ~ year, group = "category", data = uspexp, type="line-dotted");x1
+```
+
+
+
+
+```{r Leaflet}
+map3  <- Leaflet$new()
+map3$setView(c(51.505, -0.09), zoom = 13)
+map3$marker(c(51.5, -0.09), bindPopup = "<p> Hi, I am a popup </p>")
+map3$marker(c(51.495, -0.083), bindPopup = "<p> Hi, I am another popup </p>")
+map3
+```
+
+
+```{r Rikshaw}
+usp  <- reshape2::melt(USPersonalExpenditure)
+# Get the decades into a date Rickshaw likes 
+usp$Var2  <- as.numeric(as.POSIXct(paste0(usp$Var2, "-01-01")))
+p4  <- Rickshaw$new()
+p4$layer(value ~ Var2, group = "Var1", data = usp, type = "area", width = 560); p4
+
+# Add a helpful slider this easily; other features TRUE as default
+p4$set(slider=TRUE); p4
+```
+
+
+
+
+```{r highchart}
+
+h1  <- hPlot(x = "Wr.Hnd", y = "NW.Hnd", data = MASS::survey, 
+             type=c("line","bubble","scatter"), group = "NW.Hnd",
+             size="Age");h1
+
+library("MASS")
+?survey # Student Survey Data
+#Wr.Hnd: span (distance from tip of thumb to tip of little finger of spread hand) of writing hand, in centimetres.
+#NW.Hnd:span of non-writing hand.
+
+
+dataSet  <- MASS::survey; View(dataSet[,c("Wr.Hnd", "NW.Hnd", "Age")])
+
+```
+
+
+```{r}
+require(rCharts)
+data(airquality)
+View(airquality)
+dTable(airquality, sPaginationType = "full_numbers")
+```
+
+
+
+
+Shiny 
+
+```{r}
+library(shiny)
+```
+
+
